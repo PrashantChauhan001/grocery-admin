@@ -1,0 +1,10 @@
+
+
+
+# DB files to ignore
+02-data.sql
+01-create-users.sql
+docker-compose.yml
+# general
+*.sql
+*.yml
