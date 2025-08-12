@@ -18,9 +18,7 @@ const ProductsPage = () => {
   const t = useTranslations("pages.products");
 
   const [params, setParams] = useState<IQueryParams>(defaultParams);
-  const { data, isFetching } = useProductsQuery(params, {
-    keepPreviousData: true,
-  });
+  const { data, isFetching } = useProductsQuery(params);
 
   const noMoreProducts = data.meta.total <= params.limit;
 

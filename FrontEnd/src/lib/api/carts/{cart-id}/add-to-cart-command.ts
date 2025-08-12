@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { useMemo } from "react";
 
 import { DateVO } from "@/lib/date/Date";
 import { httpService } from "@/lib/http";
@@ -18,17 +19,23 @@ interface IAddToCartDto {
 }
 
 export const useAddToCartMutation = () => {
-  const { mutateAsync, isLoading } = useMutation<
+  const { mutateAsync, isPending } = useMutation<
     void,
     unknown,
     IAddToCartValues
-  >((body) =>
-    httpService.put<void, IAddToCartDto>(`carts/${body.cartId}`, {
-      userId: body.userId,
-      date: DateVO.now(),
-      products: [{ productId: body.productId, quantity: body.quantity ?? 1 }],
-    })
-  );
+  >({
+    mutationFn: (body: {
+      cartId: number;
+      userId: number;
+      productId: number;
+      quantity: number;
+    }) =>
+      httpService.put<void, IAddToCartDto>(`carts/${body.cartId}`, {
+        userId: body.userId,
+        date: DateVO.now(),
+        products: [{ productId: body.productId, quantity: body.quantity ?? 1 }],
+      }),
+  });
 
   const handler = (body: IAddToCartValues) => {
     return mutateAsync(body)
@@ -47,6 +54,8 @@ export const useAddToCartMutation = () => {
         throw e;
       });
   };
+
+  const isLoading = useMemo(() => isPending, [isPending]);
 
   return [handler, isLoading] as const;
 };

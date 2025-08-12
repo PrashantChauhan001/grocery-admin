@@ -8,11 +8,15 @@ interface IClearCartValues {
 }
 
 export const useClearCartMutation = () => {
-  const { mutateAsync, isLoading } = useMutation<
+  const { mutateAsync, isPending: isLoading } = useMutation<
     void,
     unknown,
     IClearCartValues
-  >((body) => httpService.delete(`carts/${body.cartId}`));
+  >({
+    mutationFn: (body: IClearCartValues) => {
+      return httpService.delete(`carts/${body.cartId}`);
+    },
+  });
 
   const handler = (body: IClearCartValues) => {
     return mutateAsync(body)
