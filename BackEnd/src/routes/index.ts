@@ -1,10 +1,13 @@
-import express from 'express';
-// import logger from '../utils/logger';
-import {healthCheck} from '../handlers/healthcheck'
+import { Router } from 'express';
+import { enumRouter } from './enum.route';
+import { APP_ROUTE } from 'src/utils/route.constants';
+import { productRouter } from './product.route';
+import { customerRouter } from './customer.route';
 
-const router = express.Router();
+const router = Router();
 
-/* GET home page. */
-router.get('/', healthCheck);
+router.use(APP_ROUTE.ENUM, enumRouter);
+router.use(APP_ROUTE.PRODUCTS, productRouter);
+router.use(APP_ROUTE.CUSTOMERS, customerRouter);
 
 export default router;

@@ -1,0 +1,27 @@
+{
+  "name": "grossary-admin",
+  "version": "0.0.1",
+  "description": "Grocery admin is fully managed service for stock and order management",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "npm run start:db && npm run start:be",
+    "start:be": "cd Backend && npm run dev",
+    "start:db": "cd DB && docker-compose up -d",
+    "start:fe": "cd FrontEnd && npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-personal:PrashantChauhan001/grocery-admin.git"
+  },
+  "keywords": [
+    "admin",
+    "panel",
+    "crm",
+    "order",
+    "stock",
+    "management."
+  ],
+  "author": "Prashant Chauhan",
+  "license": "ISC"
+}
