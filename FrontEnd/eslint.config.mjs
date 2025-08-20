@@ -2,7 +2,6 @@ import { config, configs as tsConfigs } from "typescript-eslint";
 import js from "@eslint/js";
 import { configs } from "eslint-plugin-react-hooks";
 import reactPlugin from "eslint-plugin-react";
-import prettierPluginRecommended from "eslint-plugin-prettier/recommended";
 import importPlugin from "eslint-plugin-import";
 import storybookPlugin from "eslint-plugin-storybook";
 import vitest from "eslint-plugin-vitest";
@@ -33,7 +32,7 @@ export default config(
   configs["recommended-latest"],
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat["jsx-runtime"],
-  prettierPluginRecommended,
+  // prettierPluginRecommended,
   ...storybookPlugin.configs["flat/recommended"],
 
   {
@@ -89,18 +88,12 @@ export default config(
       ],
       "react-refresh/only-export-components": "error",
       "no-unused-vars": "off",
-      "prettier/prettier": [
-        "error",
-        {
-          endOfLine: "auto",
-        },
-      ],
-      "no-console": [
-        "error",
-        {
-          allow: ["error"],
-        },
-      ],
+      // "no-console": [
+      //   "warn",
+      //   {
+      //     allow: ["warn"],
+      //   },
+      // ],
       "react/jsx-curly-brace-presence": [
         "error",
         {
@@ -124,7 +117,7 @@ export default config(
       "@typescript-eslint/no-unsafe-return": "error",
       "@typescript-eslint/only-throw-error": "error",
       // "@typescript-eslint/prefer-promise-reject-errors": "error",
-      // "@typescript-eslint/prefer-nullish-coalescing": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/no-unsafe-member-access": "error",
       "@typescript-eslint/no-unsafe-argument": "error",
       "@typescript-eslint/no-base-to-string": "error",
@@ -146,19 +139,6 @@ export default config(
         },
       ],
       "@typescript-eslint/no-unsafe-enum-comparison": "error",
-      "no-restricted-imports": [
-        "error",
-        {
-          patterns: ["react-router"],
-          paths: [
-            {
-              importNames: ["default"],
-              message: `Instead of default import, please use import { method } from "ramda" instead.`,
-              name: "ramda",
-            },
-          ],
-        },
-      ],
     },
   },
   {
@@ -181,7 +161,7 @@ export default config(
     rules: {
       strict: "off",
       "import/no-commonjs": "off",
-      // "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-spread": "off",

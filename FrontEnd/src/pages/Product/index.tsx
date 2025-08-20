@@ -13,7 +13,7 @@ import { useNavigate, useParams, useRouteError } from "@/lib/router";
 const ProductPage = () => {
   const params = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  const { data } = useProductQuery(params.productId!);
+  const { data } = useProductQuery(params.productId);
   const t = useTranslations("pages.product");
 
   return (

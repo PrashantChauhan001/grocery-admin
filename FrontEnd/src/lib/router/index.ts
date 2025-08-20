@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-restricted-imports */
-
 import {
   useLocation,
   generatePath as reactRouterGeneratePath,
@@ -38,9 +35,11 @@ export const generatePath = (
 };
 
 type ExtractRouteParams<T extends string> =
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   T extends `${infer _Start}:${infer Param}/${infer Rest}`
     ? Param | ExtractRouteParams<Rest>
-    : T extends `${infer _Start}:${infer Param}`
+    : // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      T extends `${infer _Start}:${infer Param}`
       ? Param
       : never;
 

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { ConsoleLogger } from "./ConsoleLogger";
 import { type ILogger, LogEnvironment } from "./ILogger";
 import { StorybookLogger } from "./StorybookLogger";
@@ -45,7 +44,7 @@ export class Logger {
       this.init();
     }
 
-    return this._client!;
+    return this._client;
   }
 
   static init() {

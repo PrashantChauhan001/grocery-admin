@@ -11,7 +11,7 @@ import { useParams } from "@/lib/router";
 
 const CartPage = () => {
   const params = useParams<{ cartId: string }>();
-  const { data } = useCartProductsQuery(params.cartId!);
+  const { data } = useCartProductsQuery(params.cartId);
   const t = useTranslations("pages.cart");
   const relativeTime = useRelativeTime();
 
