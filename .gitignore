@@ -6,3 +6,6 @@ docker-compose.yml
 *.sql
 *.yml
 **/*.env
+
+# 
+node_modules
