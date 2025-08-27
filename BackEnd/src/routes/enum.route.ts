@@ -1,5 +1,5 @@
-import { getCategories, getPaymentModes, getUnits } from '@src/handlers/enum.handler';
-import { APP_ROUTE } from '@src/utils/route.constants';
+import { getCategories, getPaymentModes, getUnits } from '@src/controller/enum.controller';
+import { APP_ROUTE } from '@src/constants/route.constants';
 import { Router } from 'express';
 
 const enumRouter = Router();

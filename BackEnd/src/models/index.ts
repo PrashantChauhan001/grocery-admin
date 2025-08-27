@@ -1,4 +1,4 @@
-import { sequelize } from '@src/db/initialization.db';
+import { sequelize } from '@src/configs/initialization.db';
 import { Category } from './Categories.model';
 import { PaymentMode } from './PaymentModes.model';
 import { Product } from './Products.model';

@@ -1,8 +1,9 @@
-import { getProducts } from '@src/handlers/product.handler';
+import { APP_ROUTE } from '@src/constants/route.constants';
+import { getProducts } from '@src/controller/product.controller';
 import { Router } from 'express';
 
 const productRouter = Router();
 
-productRouter.get('/', getProducts);
+productRouter.get(APP_ROUTE.ROOT, getProducts);
 
 export { productRouter };

@@ -9,10 +9,10 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 import { handleError } from './helpers/error';
 import httpLogger from './middlewares/httpLogger';
 import appRouter from './routes';
-import { isDBRunning } from './db/initialization.db';
+import { isDBRunning } from './configs/initialization.db';
+import { APP_ROUTE } from './constants/route.constants';
 
 isDBRunning().then((res) => {
-  console.log(res);
   if (res) {
     const app: express.Application = express();
 
@@ -21,9 +21,9 @@ isDBRunning().then((res) => {
     app.use(express.urlencoded({ extended: false }));
     app.use(cookieParser());
 
-    app.use('/api', appRouter);
+    app.use(APP_ROUTE.API, appRouter);
 
-    app.use('/', (_, res) => res.send('<h1>Server is Listning</h1>'));
+    app.use(APP_ROUTE.ROOT, (_req, res) => res.send('<h1>Server is Listning</h1>'));
 
     // catch 404 and forward to error handler
     app.use((_req, _res, next) => {
@@ -31,10 +31,7 @@ isDBRunning().then((res) => {
     });
 
     // error handler
-    const errorHandler: express.ErrorRequestHandler = (err, _req, res) => {
-      handleError(err, res);
-    };
-    app.use(errorHandler);
+    app.use(handleError);
 
     const port = process.env.PORT || '8000';
     app.set('port', port);
@@ -60,7 +57,6 @@ isDBRunning().then((res) => {
     }
 
     function onListening() {
-      // const addr = server.address();
       console.info(`Server is listening on http://localhost:${port}`);
     }
 
@@ -71,5 +67,3 @@ isDBRunning().then((res) => {
     console.error('DB is not connected');
   }
 });
-// if (!isDBRunning()) {
-// } else {}

@@ -1,4 +1,4 @@
-import { sequelize } from '@src/db/initialization.db';
+import { sequelize } from '@src/configs/initialization.db';
 import { DataTypes } from 'sequelize';
 
 const PaymentMode = sequelize.define(

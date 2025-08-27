@@ -9,9 +9,8 @@ const sequelize = new Sequelize(database, user, password, {
   dialect: 'mysql',
   port: port,
 });
-
+sequelize.sync({ alter: true });
 const isDBRunning = async () => {
-  console.log(host, port, database, user, password);
   console.log('connecting to database.');
   try {
     await sequelize.authenticate();

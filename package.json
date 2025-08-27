@@ -23,5 +23,8 @@
     "management."
   ],
   "author": "Prashant Chauhan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express-async-wrapper": "^0.1.0"
+  }
 }
