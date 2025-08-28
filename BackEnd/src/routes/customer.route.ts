@@ -9,7 +9,7 @@ const customerRouter = Router();
 // root /customer route
 customerRouter.get(APP_ROUTE.ROOT, verifySchema(getCustomersSchema, REQ_KEY.QUERY), getCustomers);
 customerRouter.post(APP_ROUTE.ROOT, verifySchema(createCustomerReqSchema, REQ_KEY.BODY), addCustomer);
-customerRouter.patch(APP_ROUTE.ROOT, verifySchema(updateCustomerSchema, REQ_KEY.BODY), updateCustomer);
+customerRouter.put(APP_ROUTE.ROOT, verifySchema(updateCustomerSchema, REQ_KEY.BODY), updateCustomer);
 
 // child /customers/* route
 customerRouter.get(APP_ROUTE_PARAM.ID, verifySchema(getCustomerSchema, REQ_KEY.PARAMS), getCustomer);

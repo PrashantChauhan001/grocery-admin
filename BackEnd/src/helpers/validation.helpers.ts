@@ -8,6 +8,7 @@ import { REQ_KEY } from '@src/constants/route.constants';
 const verifySchema = (schema: Joi.AnySchema, reqKey: REQ_KEY.BODY | REQ_KEY.QUERY | REQ_KEY.PARAMS) =>
   asyncWrap(async (req: Request, res: Response, next: NextFunction) => {
     const { error, value } = schema.validate(req[reqKey]);
+    console.log(error, '<===');
     if (error) {
       throw new ErrorHandler(RESPONSE_CODES[400].code, error.message);
     } else {

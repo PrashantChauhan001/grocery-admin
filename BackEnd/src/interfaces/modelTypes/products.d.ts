@@ -1,6 +1,6 @@
 const enum productColumnNames {
   id = 'id',
-  cat_id = '  cat_id',
+  cat_id = 'cat_id',
   ename = 'ename',
   catName = 'catName',
   hname = 'hname',

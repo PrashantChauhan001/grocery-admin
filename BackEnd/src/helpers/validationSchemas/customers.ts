@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import { getListingSchema } from './common.schema';
 
 const createCustomerReqSchema = Joi.object({
   name: Joi.string().max(25).required(),
@@ -20,11 +21,7 @@ const updateCustomerSchema = createCustomerReqSchema.append({
   id: Joi.number().integer().required().greater(0),
 });
 
-const getCustomersSchema = Joi.object({
-  page: Joi.number().integer().greater(0),
-  size: Joi.number().integer().greater(0),
-  search: Joi.string().min(1),
-}).unknown();
+const getCustomersSchema = getListingSchema;
 const getCustomerSchema = Joi.object({
   id: Joi.number().integer().greater(0),
 }).unknown();
